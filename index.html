@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Kit</title>
+  <script>
+    window.onload = function() {
+        let osCSS = document.createElement('link');
+        osCSS.rel = 'stylesheet';
+        osCSS.type = 'text/css';
+        
+        let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        
+        if (userAgent.indexOf("Win") !== -1) {
+            osCSS.href = 'styles.css'; // Load Windows-specific CSS
+        } else if (/android|iphone|ipad|ipod/i.test(userAgent)) {
+            osCSS.href = 'styles1.css'; // Load Mobile-specific CSS
+        } else {
+            osCSS.href = 'styles.css'; // Load a fallback CSS
+        }
+        
+        document.head.appendChild(osCSS);
+    };
+</script>
+</head>
+
+<body>
+  <h1>Drum 🥁 Kit</h1>
+  <p>click the buttons below to play sounds. NOTICE That on Mac or Pc You Can Also use the keyboard (w, a, s, d, j, k, l) letters. </p>
+  <div class="set">
+    <button class="w drum">w</button>
+    <button class="a drum">a</button>
+    <button class="s drum">s</button>
+    <button class="d drum">d</button>
+    <button class="j drum">j</button>
+    <button class="k drum">k</button>
+    <button class="l drum">l</button>
+  </div>
+
+
+  <script>
+    function loadScript(src) {
+        let script = document.createElement('script');
+        script.src = src;
+        script.type = 'text/javascript';
+        document.head.appendChild(script);
+    }
+
+    let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    if (/windows/i.test(userAgent)) {
+        loadScript('index.js'); // Load Windows-specific JS
+    } else if (/android|iphone|ipad|ipod/i.test(userAgent)) {
+        loadScript('index1.js'); // Load Mobile-specific JS
+    } else {
+        loadScript('index.js'); // Load Default JS if OS is not detected
+    }
+</script>
+
+</body>
+</html>
